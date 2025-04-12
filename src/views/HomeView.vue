@@ -9,16 +9,17 @@
       quibusdam.
     </p>
     <name-list :students="students" @ChangeArray="ChangeArray($event)" />
+    <sign-up />
   </div>
 </template>
 
 <script>
-import HeadingTag from "@/components/HeaderTag.vue";
 import NameList from "@/components/NameList.vue";
+import SignUp from "@/components/SignUp.vue";
 export default {
   components: {
-    HeadingTag,
     NameList,
+    SignUp,
   },
   data() {
     return {
