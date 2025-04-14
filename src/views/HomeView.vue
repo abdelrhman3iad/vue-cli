@@ -1,7 +1,6 @@
 <template>
   <div class="HomeView">
     <h2>Home View</h2>
-    <HeadingTag />
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quisquam
       nam architecto. Ipsa voluptatibus impedit, libero ad, aliquam, delectus
