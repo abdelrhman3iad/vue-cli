@@ -7,12 +7,13 @@
         <input type="text" v-model="student.first_name" name="first-name" />
       </div>
       <div>
-        <label for="last-name">Last Name</label>
-        <input type="text" v-model="student.last_name" name="last-name" />
-      </div>
-      <div>
-        <label for="email">Email</label>
-        <input type="email" v-model="student.email" name="email" />
+        <label for="FavouriteSport">Favourite Sport</label>
+        <input
+          type="text"
+          v-model="student.FavouriteSport"
+          name="FavouriteSport"
+        />
+        <input type="submit" value="Add" @click="addSport" />
       </div>
       <div>
         <h4>Grade</h4>
@@ -41,33 +42,6 @@
           id="Female"
         />
       </div>
-      <div>
-        <h4>Sports</h4>
-        <label for="football">Football</label>
-        <input
-          type="checkbox"
-          v-model="student.Sports.football"
-          name="Sports"
-          value="football"
-          id="football"
-        />
-        <label for="Basketball">Basketball</label>
-        <input
-          type="checkbox"
-          name="Sports"
-          v-model="student.Sports.Basketball"
-          value="Basketball"
-          id="Basketball"
-        />
-        <label for="Tennis">Tennis</label>
-        <input
-          type="checkbox"
-          v-model="student.Sports.Tennis"
-          name="Sports"
-          value="Tennis"
-          id="Tennis"
-        />
-      </div>
       <div class="submit">
         <button type="submit">Submit</button>
       </div>
@@ -75,13 +49,13 @@
   </div>
   <hr />
   <div class="data">
-    <p>First name : {{ students.first_name }}</p>
-    <p>Last name : {{ students.last_name }}</p>
-    <p>Email : {{ students.email }}</p>
-    <p>Grade : {{ students.grade }}</p>
-    <p>Gender : {{ students.Gender }}</p>
-    <p v-for="(value, Sport, i) in students.Sports" :key="i">
-      <span v-if="value">{{ Sport }} : {{ value }}</span>
+    <p>First name : {{ first_name }}</p>
+    <p>Last name : {{ last_name }}</p>
+    <p>Email : {{ email }}</p>
+    <p>Grade : {{ grade }}</p>
+    <p>Gender : {{ Gender }}</p>
+    <p v-for="(Sport, i) in FavouriteSport" :key="i">
+      <span v-if="value">Favourite Sport : {{ Sport }}</span>
     </p>
   </div>
   <hr />
@@ -95,51 +69,29 @@
 
 <script>
 export default {
-  name: "SignUp",
   data() {
     return {
-      posts: [],
       student: {
         first_name: "",
         last_name: "",
         email: "",
         grade: "",
         Gender: "",
-        Sports: {
-          football: "",
-          Basketball: "",
-          Tennis: "",
-        },
+        FavouriteSport: "",
       },
-      students: {
-        first_name: "",
-        last_name: "",
-        email: "",
-        grade: "",
-        Gender: "",
-        Sports: {
-          football: "",
-          Basketball: "",
-          Tennis: "",
-        },
-      },
+      Sports: [],
+      posts: [],
+      data: [],
     };
   },
   methods: {
-    addStudent() {
-      this.students = this.student;
-      this.student = {
-        first_name: "",
-        last_name: "",
-        email: "",
-        grade: "",
-        Gender: "",
-        Sports: {
-          football: "",
-          Basketball: "",
-          Tennis: "",
-        },
-      };
+    addSport() {
+      this.Sport.push(this.FavouriteSport);
+      this.FavouriteSport = "";
+    },
+    addData() {
+      this.data = this.student;
+      console.log(this.data);
     },
     async postsData() {
       await fetch("https://dummyjson.com/posts")
@@ -159,10 +111,10 @@ form {
   flex-wrap: wrap;
 
   div {
-    width: 33.3%;
+    width: 50%;
     button {
       margin-top: 20px;
-      margin-left: 100%;
+      margin-left: 50%;
       margin-bottom: 12px;
       justify-content: center;
       width: 100%;
