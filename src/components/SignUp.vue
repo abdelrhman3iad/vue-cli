@@ -11,14 +11,29 @@
         </select>
       </div>
       <div class="submit">
-        <button type="submit">Submit</button>
+        <button v-color="'red'" type="submit">Submit</button>
       </div>
     </form>
   </div>
   <hr />
+  <div class="students">
+    <li v-for="student in students" :key="student">
+      <ul>
+        {{
+          student.name
+        }}
+      </ul>
+      <ul>
+        {{
+          student.username
+        }}
+      </ul>
+    </li>
+  </div>
 </template>
 
 <script>
+import studentMixins from "@/mixins/studentMixins";
 export default {
   data() {
     return {
@@ -26,6 +41,8 @@ export default {
       selectedCurrency: "",
     };
   },
+  mixins: [studentMixins],
+  directives: {},
   methods: {
     async currenciesData() {
       await fetch(
@@ -78,7 +95,7 @@ form {
   flex-wrap: wrap;
 
   div {
-    width: 50%;
+    // width: 50%;
     button {
       margin-top: 20px;
       margin-left: -50%;

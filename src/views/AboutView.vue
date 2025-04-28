@@ -26,11 +26,27 @@
     <br />
     <button @click="isActive = !isActive">Toggle</button>
   </div>
+  <hr />
+  <div class="students">
+    <li v-for="student in students" :key="student">
+      <ul>
+        {{
+          student.name
+        }}
+      </ul>
+      <ul>
+        {{
+          student.username
+        }}
+      </ul>
+    </li>
+  </div>
 </template>
 
 <script>
 import NameList from "@/components/NameList.vue";
 import NamelistTwo from "@/components/NameList.vue";
+import studentMixins from "@/mixins/studentMixins";
 export default {
   data() {
     return {
@@ -42,5 +58,6 @@ export default {
     NameList,
     NamelistTwo,
   },
+  mixins: [studentMixins],
 };
 </script>
